@@ -1,7 +1,17 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(function () {
+$(document).ready(function () {  // will only run when the page is ready
+    $('.btn').on('click', function() {  // excutes a function when btn is clicked 
+
+        var task = $(this).siblings('.description').val(); //stores the task into a var
+        var time = $(this).parent().attr('id'); // stores the ID of the parent in a var EX:hour-9
+
+        localStorage.setItem(time, task); // stores the task and time in local storage
+
+        
+        
+    });
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
