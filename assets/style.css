@@ -68,7 +68,10 @@ body {
     color: azure;
     font-size: 20px;
     padding-bottom: 20px;
-    display: none;
+    display: none; 
   }
 
+  .show {
+    display: block;
+  }
   

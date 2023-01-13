@@ -6,11 +6,14 @@ $(document).ready(function () {  // will only run when the page is ready
 
         var task = $(this).siblings('.description').val(); //stores the task into a var
         var time = $(this).parent().attr('id'); // stores the ID of the parent in a var EX:hour-9
-
+        var $hide =$('.show');
         localStorage.setItem(time, task); // stores the task and time in local storage
 
-        
-        
+        $('.alert').addClass('show'); // adds the a class .show to show the alert.
+
+        setTimeout(function() {  //this function has a timer to remove the class.
+            $(".alert").removeClass('show');
+        }, 1000);     
     });
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
