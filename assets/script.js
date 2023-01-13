@@ -2,7 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(document).ready(function () {  // will only run when the page is ready
-    $('.btn').on('click', function() {  // excutes a function when btn is clicked 
+    $('.btn').on('click', function() {  // listener for click events on the save button/ local storage.
 
         var task = $(this).siblings('.description').val(); //stores the task into a var
         var time = $(this).parent().attr('id'); // stores the ID of the parent in a var EX:hour-9
@@ -15,12 +15,44 @@ $(document).ready(function () {  // will only run when the page is ready
             $(".alert").removeClass('show');
         }, 1000);     
     });
-    // TODO: Add a listener for click events on the save button. This code should
-    // use the id in the containing time-block as a key to save the user input in
-    // local storage. HINT: What does `this` reference in the click listener
-    // function? How can DOM traversal be used to get the "hour-x" id of the
-    // time-block containing the button that was clicked? How might the id be
-    // useful when saving the description in local storage?
+
+
+
+
+
+
+
+
+
+
+
+
+        $('.row').each(function () {  // the past, present, or future class
+            var hours = dayjs().hour(); // 
+            var hourOfDay = parseInt($(this).attr('id').split('-') [1]);// Use split() in jquery.
+
+            if(hourOfDay < hours) {
+                $(this).addClass('past');
+                $(this).removeClass('present');
+                $(this).removeClass('future');
+            } else if (hourOfDay === hours){
+                $(this).addClass('present');
+                $(this).removeClass('past');
+                $(this).removeClass('future');
+            } else {
+                $(this).addClass('future');
+                $(this).removeClass('present');
+                $(this).removeClass('past');
+            }
+        });
+
+    
+
+   
+
+
+
+
     //
     // TODO: Add code to apply the past, present, or future class to each time
     // block by comparing the id to the current hour. HINTS: How can the id
