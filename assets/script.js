@@ -1,8 +1,8 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(document).ready(function () {  // will only run when the page is ready
-    $('.btn').on('click', function() {  // listener for click events on the save button/ local storage.
+$(document).ready(function () {  // When the Documnet is ready we will run this function.
+    $('.btn').on('click', function() {  // listener for click events on the save button for local storage.
 
         var task = $(this).siblings('.description').val(); //stores the task into a var
         var time = $(this).parent().attr('id'); // stores the ID of the parent in a var EX:hour-9
@@ -26,43 +26,57 @@ $(document).ready(function () {  // will only run when the page is ready
 
 
 
-
         $('.row').each(function () {  // the past, present, or future class
-            var hours = dayjs().hour(); // 
-            var hourOfDay = parseInt($(this).attr('id').split('-') [1]);// Use split() in jquery.
+            var hours = dayjs().hour(); // JavaScript library that displays dates and times
+            var hourOfDay = parseInt($(this).attr('id').split('-') [1]);// this grabs the id from each row and turns it into a number.
 
-            if(hourOfDay < hours) {
-                $(this).addClass('past');
-                $(this).removeClass('present');
-                $(this).removeClass('future');
-            } else if (hourOfDay === hours){
-                $(this).addClass('present');
-                $(this).removeClass('past');
-                $(this).removeClass('future');
-            } else {
-                $(this).addClass('future');
-                $(this).removeClass('present');
-                $(this).removeClass('past');
+         if(hourOfDay < hours) { // If the hour has past it will add the past class.
+            $(this).addClass('past');
+            $(this).removeClass('present');
+            $(this).removeClass('future');
+         } else if (hourOfDay === hours){ // If the hour is the same it will add present class.
+            $(this).addClass('present');
+            $(this).removeClass('past');
+            $(this).removeClass('future');
+         } else {                            // if its left over it will add future class.
+            $(this).addClass('future');
+            $(this).removeClass('present');
+            $(this).removeClass('past');
             }
         });
 
     
+        
+
+
 
    
+        //  first we are selecting the descriptions for each #hour-9-17.
+        // Then sets the value attribute of the selected elements.
+        // get value from each hours local storage
+        $('#hour-9 .description').val( localStorage.getItem('hour-9'));
+        $('#hour-10 .description').val( localStorage.getItem('hour-10'));
+        $('#hour-11 .description').val( localStorage.getItem('hour-11'));
+        $('#hour-12 .description').val( localStorage.getItem('hour-12'));
+        $('#hour-13 .description').val( localStorage.getItem('hour-13'));
+        $('#hour-14 .description').val( localStorage.getItem('hour-14'));
+        $('#hour-15 .description').val( localStorage.getItem('hour-15'));
+        $('#hour-16 .description').val( localStorage.getItem('hour-16'));
+        $('#hour-17 .description').val( localStorage.getItem('hour-17'));
 
 
 
 
+        //current day is displayed at the top using day.js
+
+
+        //Selecting the Id #currentDay and class lead
+        //Next we are adding text with the text() method
+        //using day.js to collect the data
+        $('#currentDay').text(dayjs().format("MM/DD/YYYY"));
+   
     //
-    // TODO: Add code to apply the past, present, or future class to each time
-    // block by comparing the id to the current hour. HINTS: How can the id
-    // attribute of each time-block be used to conditionally add or remove the
-    // past, present, and future classes? How can Day.js be used to get the
-    // current hour in 24-hour time?
-    //
-    // TODO: Add code to get any user input that was saved in localStorage and set
-    // the values of the corresponding textarea elements. HINT: How can the id
-    // attribute of each time-block be used to do this?
+
     //
     // TODO: Add code to display the current date in the header of the page.
   });
