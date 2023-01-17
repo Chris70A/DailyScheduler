@@ -73,10 +73,10 @@ $(document).ready(function () {  // When the Documnet is ready we will run this 
         //Selecting the Id #currentDay and class lead
         //Next we are adding text with the text() method
         //using day.js to collect the data
-        $('#currentDay').text(dayjs().format("MM/DD/YYYY"));
+        $('#currentDay').text(dayjs().format("[Today:] MM-DD-YYYY h:mm A"));// A = AM/PM
    
     //
 
     //
-    // TODO: Add code to display the current date in the header of the page.
+    //
   });
