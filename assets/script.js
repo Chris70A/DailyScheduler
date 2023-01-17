@@ -2,19 +2,19 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(document).ready(function () {  // When the Documnet is ready we will run this function.
-    $('.btn').on('click', function() {  // listener for click events on the save button for local storage.
+        $('.btn').on('click', function() {  // listener for click events on the save button for local storage.
 
-        var task = $(this).siblings('.description').val(); //stores the task into a var
-        var time = $(this).parent().attr('id'); // stores the ID of the parent in a var EX:hour-9
-        var $hide =$('.show');
-        localStorage.setItem(time, task); // stores the task and time in local storage
+            var task = $(this).siblings('.description').val(); //stores the task into a var
+            var time = $(this).parent().attr('id'); // stores the ID of the parent in a var EX:hour-9
+             var $hide =$('.show');
+            localStorage.setItem(time, task); // stores the task and time in local storage
 
-        $('.alert').addClass('show'); // adds the a class .show to show the alert.
+                 $('.alert').addClass('show'); // adds the a class .show to show the alert.
 
-        setTimeout(function() {  //this function has a timer to remove the class.
-            $(".alert").removeClass('show');
-        }, 1000);     
-    });
+            setTimeout(function() {  //this function has a timer to remove the class.
+                $(".alert").removeClass('show');
+            }, 1000);     
+        });
 
 
 
@@ -75,8 +75,5 @@ $(document).ready(function () {  // When the Documnet is ready we will run this 
         //using day.js to collect the data
         $('#currentDay').text(dayjs().format("[Today:] MM-DD-YYYY h:mm A"));// A = AM/PM
    
-    //
-
-    //
-    //
-  });
+    
+});
